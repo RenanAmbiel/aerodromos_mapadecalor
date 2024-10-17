@@ -37,10 +37,8 @@
 </head>
 <body>    
     
-            <div class="folium-map" id="map" ></div>
-        
-</body>
-<script>    
+    <div class="folium-map" id="map" ></div>
+    <script>    
     
             var map = L.map(
                 "map",
@@ -62,32 +60,33 @@
             ).addTo(map);
         
     
-        function geo_json_styler(feature) {
-            switch(feature.id) {
-                default:
-                    return {"color": "black", "fillOpacity": 0.0, "weight": 2};
-            }
-        }
-        function geo_json_onEachFeature(feature, layer) {
-            layer.on({
-                click: function(e) {
-                    map.fitBounds(e.target.getBounds());
+            function geo_json_styler(feature) {
+                switch(feature.id) {
+                    default:
+                        return {"color": "black", "fillOpacity": 0.0, "weight": 2};
                 }
-            });
-        };
-        var geo_json = L.geoJson(null, {
-                onEachFeature: geo_json_onEachFeature,
-            
-                style: geo_json_styler,
-        }).addTo(map);
+            }
+            function geo_json_onEachFeature(feature, layer) {
+                layer.on({
+                    click: function(e) {
+                        map.fitBounds(e.target.getBounds());
+                    }
+                });
+            };
+            var geo_json = L.geoJson(null, {
+                    onEachFeature: geo_json_onEachFeature,
+                
+                    style: geo_json_styler,
+            }).addTo(map);
 
-        function geo_json_add (data) {
-            geo_json.addData(data);
-        }
-            geo_json_add(brasil);
-        
-            var heat_map = L.heatLayer(coordss
-                , {"blur": 5, "max": 1.0, "maxZoom": 12, "minOpacity": 0.08, "radius": 44}
-            ).addTo(map);
-        
-</script>
+            function geo_json_add (data) {
+                geo_json.addData(data);
+            }
+                geo_json_add(brasil);
+            
+                var heat_map = L.heatLayer(coordss
+                    , {"blur": 5, "max": 1.0, "maxZoom": 12, "minOpacity": 0.08, "radius": 44}
+                ).addTo(map);
+            
+    </script>
+</body>
