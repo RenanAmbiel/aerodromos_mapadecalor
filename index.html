@@ -54,7 +54,7 @@
 
         
             var cartodblayer = L.tileLayer(
-                "https://cartodb-basemaps-{s}.global.ssl.fastly.net/dark_all/{z}/{x}/{y}.png"
+                "https://cartodb-basemaps-{s}.global.ssl.fastly.net/light_all/{z}/{x}/{y}.png"
             ).addTo(map);
         
     
@@ -88,7 +88,7 @@
                 "blur": 5,
                 "max": 1.0,
                 "maxZoom": 12,
-                "minOpacity": 0.08,
+                "minOpacity": 0.1,
                 "radius": 44
             }).addTo(map);
         }, 2000);
