@@ -53,7 +53,6 @@
             
 
         
-    
             var cartodblayer = L.tileLayer(
                 "https://cartodb-basemaps-{s}.global.ssl.fastly.net/dark_all/{z}/{x}/{y}.png"
             ).addTo(map);
@@ -81,11 +80,20 @@
             function geo_json_add (data) {
                 geo_json.addData(data);
             }
-            setTimeout(minhaFuncao, 2000);
-            geo_json_add(brasil);
+            geo_json_add(brasil)
             
-            var heat_map = L.heatLayer(coordss
-                    , {"blur": 5, "max": 1.0, "maxZoom": 12, "minOpacity": 0.08, "radius": 44}
-            ).addTo(map);
+            
+            setTimeout(function() {
+            var heat_map = L.heatLayer(coordss, {
+                "blur": 5,
+                "max": 1.0,
+                "maxZoom": 12,
+                "minOpacity": 0.08,
+                "radius": 44
+            }).addTo(map);
+            console.log("Camada de calor adicionada após 2 segundos!");
+        }, 2000);
+
+            
     </script>
 </body>
